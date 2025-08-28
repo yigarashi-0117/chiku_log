@@ -50,7 +50,7 @@ class MainApp extends StatelessWidget {
       // themeMode: ThemeMode.system,
       //scrollBehavior: ,
       getPages: router,
-      initialRoute: Routes.SURVEY,
+      initialRoute: Routes.HOME,
       //routes: // NOTE: flutter標準のルーター これは使わない
     );
   }

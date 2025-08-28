@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../view_model/survey_viewmodel.dart';
-import 'survey_header.dart';
+import '../../common/widgets/header.dart';
 import 'survey_list.dart';
 import '/routing/routes.dart';
 
@@ -32,12 +32,12 @@ class SurveyPage extends GetWidget<SurveyViewModel> {
         child: SingleChildScrollView(
           controller: controller.scrollController,
 
-          padding: EdgeInsets.only(bottom: 200),
+          padding: EdgeInsets.only(bottom: 80),
           keyboardDismissBehavior:
               ScrollViewKeyboardDismissBehavior.onDrag, // CHECK:
           child: Column(
             children: [
-              SurveyHeader(),
+              Header(),
               SurveyList(),
               Container(
                 width: 200,
@@ -47,11 +47,11 @@ class SurveyPage extends GetWidget<SurveyViewModel> {
                   onPressed: () {
                     controller.unfocus();
                   },
-                  child: Text('送信'),
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Theme.of(context).colorScheme.primary,
                     foregroundColor: Colors.white,
                   ),
+                  child: Text('回答'),
                 ),
               ),
               Obx(() => SizedBox(height: controller.bottomPadding.value)),

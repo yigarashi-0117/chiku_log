@@ -6,13 +6,13 @@ abstract final class AppTheme {
   static const _textTheme = TextTheme(
     headlineLarge: TextStyle(fontSize: 32, fontWeight: FontWeight.w500),
     headlineSmall: TextStyle(fontSize: 18, fontWeight: FontWeight.w400),
-    titleMedium: TextStyle(fontSize: 18, fontWeight: FontWeight.w500,),
+    titleMedium: TextStyle(fontSize: 18, fontWeight: FontWeight.w700,),
     bodyLarge: TextStyle(fontSize: 18, fontWeight: FontWeight.w400),
-    bodyMedium: TextStyle(fontSize: 12, fontWeight: FontWeight.w400),
+    bodyMedium: TextStyle(fontSize: 12, fontWeight: FontWeight.w600,height: 2),
     bodySmall: TextStyle(
       fontSize: 14,
-      fontWeight: FontWeight.w400,
-      color: AppColors.grey3,
+      fontWeight: FontWeight.w500,
+      color: AppColors.black1,
     ),
     labelSmall: TextStyle(
       fontSize: 10,

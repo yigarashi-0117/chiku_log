@@ -17,7 +17,7 @@ class SurveyItem extends StatelessWidget {
       key: globalKey,
       // height: 200,
       margin: const EdgeInsets.all(16),
-      padding: const EdgeInsets.all(16),
+      padding: const EdgeInsets.all(24),
       decoration: BoxDecoration(
         color: Theme.of(context).colorScheme.surfaceContainer,
         borderRadius: BorderRadius.circular(16),
@@ -35,35 +35,39 @@ class SurveyItem extends StatelessWidget {
         children: [
           Row(
             children: [
-              Container(
-            width: 35,
-            height: 35,
+              //     Container(
+              //   // width: 35,
+              //   // height: 35,
 
-            alignment: Alignment.center,
-            decoration: BoxDecoration(
-              color: Colors.black,
-              borderRadius: BorderRadius.circular(30),
-              //border: Border.all(color: Colors.grey, width: 1),
-            ),
-            margin: const EdgeInsets.fromLTRB(0, 0, 16, 16),
-            child: Text("${model.id}", style:TextStyle(color: Colors.white, fontSize: 16, fontWeight: FontWeight.w500),textAlign: TextAlign.center,),
-          ),
+              //   alignment: Alignment.center,
+              //   decoration: BoxDecoration(
+              //     // color: Colors.black,
+              //     // borderRadius: BorderRadius.circular(30),
+              //     //border: Border.all(color: Colors.grey, width: 1),
+              //   ),
+              //   margin: const EdgeInsets.fromLTRB(0, 0, 5, 16),
+              //   child: Text("${model.id +1}.", style:Theme.of(context).textTheme.titleMedium,textAlign: TextAlign.center,),
+              // ),
               Container(
-             //width: double.infinity,
-            margin: const EdgeInsets.only(bottom: 16),
-            child: Text("${model.question}", style: Theme.of(context).textTheme.titleMedium,textAlign: TextAlign.left,),
-          ),
+                //width: double.infinity,
+                margin: const EdgeInsets.only(bottom: 16),
+                child: Text(
+                  "${model.id + 1}.  ${model.question}",
+                  style: Theme.of(context).textTheme.titleMedium,
+                  textAlign: TextAlign.left,
+                ),
+              ),
             ],
           ),
           const SizedBox(height: 16),
-          
+
           SurveyRadioButton(
             id: model.id,
             onRadioChanged: (score) {
               controller.updateScore(model.id, score);
             },
           ),
-          const SizedBox(height: 32),
+          const SizedBox(height: 16),
           PointerInterceptor(
             child: TextField(
               // focusNode: controller.focusNode,
@@ -72,18 +76,22 @@ class SurveyItem extends StatelessWidget {
               onTapOutside: (event) => controller.unfocus(),
               style: Theme.of(context).textTheme.labelMedium,
               decoration: InputDecoration(
-                border: OutlineInputBorder(borderSide: BorderSide.none, borderRadius: BorderRadius.circular(8)),
+                border: UnderlineInputBorder(borderSide: BorderSide(color: const Color.fromARGB(255, 0, 0, 0))),
+                // border: OutlineInputBorder(
+                //   borderSide: BorderSide.none,
+                //   borderRadius: BorderRadius.circular(8),
+                // ),
                 // border: InputBorder.none,
-                labelText: 'ご意見ございましたらお聞かせください…',
+                labelText: 'コメント入力（任意）',
                 labelStyle: Theme.of(context).textTheme.labelMedium,
                 floatingLabelStyle: TextStyle(color: Colors.black.withAlpha(0)),
-                fillColor: Color(0xffeeeeee),
+                fillColor: Color(0xffffffff),
                 filled: true,
                 isDense: false,
                 contentPadding: const EdgeInsets.all(12),
               ),
               keyboardType: TextInputType.multiline,
-              maxLines: 3,
+              // maxLines: 3,
             ),
           ),
         ],

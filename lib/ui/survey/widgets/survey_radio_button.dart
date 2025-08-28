@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+
 class SurveyRadioButton extends StatefulWidget {
   final int id;
   int score = 0;
@@ -14,9 +15,9 @@ class SurveyRadioButton extends StatefulWidget {
 class _SurvayRadioButtonState extends State<SurveyRadioButton> {
   final double _iconSize = 45;
 
-  Widget NumberIcon(int score) {
+  Widget numberIcon(int score) {
     return widget.score == score
-        ? NumberIconSelected(score)
+        ? numberIconSelected(score)
         : InkWell(
             child: Container(
               width: _iconSize,
@@ -24,9 +25,9 @@ class _SurvayRadioButtonState extends State<SurveyRadioButton> {
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(30),
-                border: Border.all(color: Colors.black),
+                // border: Border.all(color: Colors.black),
               ),
-              child: Center(child: Text(score.toString())),
+              child: Center(child: Text("${score.toString()}点", style: Theme.of(context).textTheme.bodySmall,)),
             ),
             onTap: () {
               setState(() {
@@ -38,16 +39,20 @@ class _SurvayRadioButtonState extends State<SurveyRadioButton> {
           );
   }
 
-  Widget NumberIconSelected(int score) {
+  Widget numberIconSelected(int score) {
     return Container(
       width: _iconSize,
       height: _iconSize,
       decoration: BoxDecoration(
-        color: const Color.fromARGB(255, 190, 211, 202),
+        color: Colors.black,
         borderRadius: BorderRadius.circular(30),
         border: null,
       ),
-      child: Center(child: Text(score.toString())),
+      child: Center(child: Text("${score.toString()}点", style: TextStyle(
+      fontSize: 14,
+      fontWeight: FontWeight.w500,
+      color: Colors.white,
+    ),)),
     );
   }
 
@@ -56,11 +61,11 @@ class _SurvayRadioButtonState extends State<SurveyRadioButton> {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        NumberIcon(1),
-        NumberIcon(2),
-        NumberIcon(3),
-        NumberIcon(4),
-        NumberIcon(5),
+        numberIcon(1),
+        numberIcon(2),
+        numberIcon(3),
+        numberIcon(4),
+        numberIcon(5),
       ],
     );
   }

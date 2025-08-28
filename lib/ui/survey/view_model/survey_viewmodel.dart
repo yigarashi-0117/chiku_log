@@ -47,8 +47,25 @@ class SurveyViewModel extends GetxController {
 
   void createDummyData() {
     surveys.clear();
-    for (int i = 0; i < 10; i++) {
-      surveys.add(SurveyModel(id: i, question: "Question $i"));
+    List<String> questions = [
+      "店舗のデザイン",
+      "店舗の明るさ",
+      "店舗のBGM",
+      "店舗の居心地",
+      "店舗のレイアウト",
+      "通路幅の広さ",
+      "商品の探しやすさ",
+      "座席の快適さ",
+      "レジの使いやすさ",
+      "店内の温度",
+      "・・・",
+      "・・・",
+      "・・・",
+      "・・・",
+      "・・・",
+    ];
+    for (int i = 0; i < 15; i++) {
+      surveys.add(SurveyModel(id: i, question: questions[i]));
     }
   }
 
