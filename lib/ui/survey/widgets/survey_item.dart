@@ -5,10 +5,15 @@ import '/data/models/survey_model.dart';
 import '/ui/survey/widgets/survey_radio_button.dart';
 import 'package:pointer_interceptor/pointer_interceptor.dart';
 
+
 class SurveyItem extends StatelessWidget {
   final SurveyModel model;
   final GlobalKey globalKey;
+
+ 
+
   const SurveyItem({super.key, required this.model, required this.globalKey});
+
 
   @override
   Widget build(BuildContext context) {
@@ -35,19 +40,7 @@ class SurveyItem extends StatelessWidget {
         children: [
           Row(
             children: [
-              //     Container(
-              //   // width: 35,
-              //   // height: 35,
-
-              //   alignment: Alignment.center,
-              //   decoration: BoxDecoration(
-              //     // color: Colors.black,
-              //     // borderRadius: BorderRadius.circular(30),
-              //     //border: Border.all(color: Colors.grey, width: 1),
-              //   ),
-              //   margin: const EdgeInsets.fromLTRB(0, 0, 5, 16),
-              //   child: Text("${model.id +1}.", style:Theme.of(context).textTheme.titleMedium,textAlign: TextAlign.center,),
-              // ),
+             
               Container(
                 //width: double.infinity,
                 margin: const EdgeInsets.only(bottom: 16),
@@ -67,7 +60,7 @@ class SurveyItem extends StatelessWidget {
               controller.updateScore(model.id, score);
             },
           ),
-          const SizedBox(height: 16),
+          // const SizedBox(height: 16),
           PointerInterceptor(
             child: TextField(
               // focusNode: controller.focusNode,

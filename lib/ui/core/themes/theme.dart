@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'colors.dart';
 
 abstract final class AppTheme {
+  static Color disabledColor = const Color(0xFFC4C4C4);
+  static Color white = const Color(0xFFFFFFFF);
   static const _textTheme = TextTheme(
     headlineLarge: TextStyle(fontSize: 32, fontWeight: FontWeight.w500),
     headlineSmall: TextStyle(fontSize: 18, fontWeight: FontWeight.w400),

@@ -11,7 +11,7 @@ class Header extends GetWidget<SurveyViewModel> {
       margin: const EdgeInsets.all(16),
       height: 100,
       alignment: Alignment.center,
-      child: Text('お店のデザイン・お店の使いやすさ\nアンケート', style: Theme.of(context).textTheme.titleMedium,textAlign: TextAlign.center,),
+      child: Text('お店のデザイン・使いやすさ\nアンケート', style: Theme.of(context).textTheme.titleMedium,textAlign: TextAlign.center,),
       decoration: BoxDecoration(
         border: Border(
           bottom: BorderSide(color: Color.fromARGB(255, 122, 18, 18), width:4),

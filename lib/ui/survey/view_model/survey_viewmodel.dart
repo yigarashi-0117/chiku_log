@@ -22,7 +22,7 @@ class SurveyViewModel extends GetxController {
   // [ lifecycle ]
   @override
   void onInit() {
-    createDummyData();
+    _createDummyData();
     
     super.onInit();
     dummyFocusNode.addListener(() {
@@ -45,7 +45,7 @@ class SurveyViewModel extends GetxController {
 
   // ------------------------------------------------------------
 
-  void createDummyData() {
+  void _createDummyData() {
     surveys.clear();
     List<String> questions = [
       "店舗のデザイン",
