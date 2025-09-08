@@ -12,6 +12,8 @@ class TopPage extends GetWidget<TopViewModel> {
 
   @override
   Widget build(BuildContext context) {
+    // TODO: 回答済みの場合は結果ページへ遷移。取得済みのアマギフ番号を表示 
+
     return Scaffold(
       body: SingleChildScrollView(
         // padding: EdgeInsets.all(16),
@@ -22,7 +24,7 @@ class TopPage extends GetWidget<TopViewModel> {
               margin: EdgeInsets.only(top: 10),
               padding: EdgeInsets.all(32),
               child: Text(
-                'この度はお買い上げいただきまして誠にありがとうございます。\nお店に関するアンケート調査になります。\n回答後、Amazonギフトカードのアクセスコードが表示されます。',
+                'この度はお買い上げいただきまして誠にありがとうございます。\nお店に関するアンケート調査になります。\n回答後、Amazonギフトカードのアクセスコードが表示されます。\n※ 平均点が1.0超〜5.0未満になる範囲で回答をお願いします。',
                 style: Theme.of(context).textTheme.bodyMedium,
                 textAlign: TextAlign.left,
               ),

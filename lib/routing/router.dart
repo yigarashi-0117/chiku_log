@@ -6,6 +6,8 @@ import 'package:talker_flutter/talker_flutter.dart';
 import '/utils/log.dart';
 import '/ui/top/widgets/top_page.dart';
 import '/ui/top/view_model/top_viewmodel.dart';
+import '/ui/gift/gift_page.dart';
+import '/ui/gift/viewmodel/gift_viewmodel.dart';
 
 List<GetPage> router = [
   GetPage(
@@ -21,5 +23,10 @@ List<GetPage> router = [
   GetPage(
     name: Routes.DEBUG,
     page: () => TalkerScreen(talker: Log().talker),
+  ),
+  GetPage(
+    name: Routes.GIFT,
+    page: () => const GiftPage(),
+    binding: GiftViewModelBinding(),
   ),
 ];
