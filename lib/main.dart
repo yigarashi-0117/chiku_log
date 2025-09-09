@@ -16,6 +16,7 @@ void main() async {
   // web.window.navigator.storage.persist(); // CHECK: 機能してる？　必要ない？　
   DataStorage().initizalize();
   // TODO: 回答済みの場合は結果ページへ遷移。取得済みのアマギフ番号を表示 
+  
 
   WidgetsFlutterBinding.ensureInitialized();
   runApp(const MainApp());

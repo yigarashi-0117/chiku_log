@@ -8,6 +8,8 @@ import '/ui/top/widgets/top_page.dart';
 import '/ui/top/view_model/top_viewmodel.dart';
 import '/ui/gift/gift_page.dart';
 import '/ui/gift/viewmodel/gift_viewmodel.dart';
+import '/ui/survey_finished/survey_finished.dart';
+
 
 List<GetPage> router = [
   GetPage(
