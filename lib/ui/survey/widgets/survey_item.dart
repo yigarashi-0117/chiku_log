@@ -45,7 +45,7 @@ class SurveyItem extends StatelessWidget {
                 //width: double.infinity,
                 margin: const EdgeInsets.only(bottom: 16),
                 child: Text(
-                  "${model.id + 1}.  ${model.question}",
+                  "${model.id}.  ${model.question}",
                   style: Theme.of(context).textTheme.titleMedium,
                   textAlign: TextAlign.left,
                 ),

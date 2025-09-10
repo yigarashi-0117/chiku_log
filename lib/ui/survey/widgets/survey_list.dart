@@ -9,14 +9,29 @@ class SurveyList extends GetWidget<SurveyViewModel> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: List.generate(
-        controller.surveys.length, (index) => 
-        SurveyItem(
-          model: controller.surveys[index],
-          globalKey: GlobalKey()
-        ),
-      ),
+    return FutureBuilder(
+      future: controller.initData(),
+      builder: (context, snapshot) {
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return Center(child: CircularProgressIndicator());
+        } else if (snapshot.hasError) {
+          return Center(child: Text('Error: ${snapshot.error}'));
+        } else if (snapshot.hasData) {
+          return Container();
+        }else{
+          return Obx(() => Column(
+            children: List.generate(
+              controller.surveys.length,
+              (index) => SurveyItem(
+                model: controller.surveys[index],
+                globalKey: GlobalKey(),
+              ),
+            ),
+          ));
+        }
+        
+        
+      },
     );
   }
 }

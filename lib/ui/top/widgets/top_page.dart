@@ -6,16 +6,21 @@ import '../view_model/top_viewmodel.dart';
 
 import '../../../ui/core/themes/theme.dart';
 import 'age_radio_button.dart';
+import '../../../data/data_storage.dart';
 
 class TopPage extends GetWidget<TopViewModel> {
   const TopPage({super.key});
 
-  @override
-  Widget build(BuildContext context) {
-    // TODO: 回答済みの場合は結果ページへ遷移。取得済みのアマギフ番号を表示 
+  Widget _buildGiftUnavailable() {
+    return  Center(
+        child: 
+          Text("アンケートは終了しました。\nまたのご利用をお待ちしております。",textAlign: TextAlign.center,),
+      
+    );
+  }
 
-    return Scaffold(
-      body: SingleChildScrollView(
+  Widget _buildGiftAvailable(BuildContext context) {
+    return SingleChildScrollView(
         // padding: EdgeInsets.all(16),
         child: Column(
           children: [
@@ -98,7 +103,18 @@ class TopPage extends GetWidget<TopViewModel> {
             ),
           ],
         ),
-      ),
+      );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: FutureBuilder(future: DataStorage().initizalize(), builder: (context, snapshot) {
+        if (snapshot.connectionState == ConnectionState.done) {
+          return DataStorage().isGiftAvailable ? _buildGiftAvailable(context) : _buildGiftUnavailable();
+        }
+        return const Center(child: CircularProgressIndicator());
+      }),
     );
   }
 }

@@ -3,10 +3,14 @@ import 'package:get/get.dart';
 import '/utils/scroll_util.dart';
 import '/data/models/survey_model.dart';
 import '/utils/log.dart';
+import '/config/config.dart';
+import '/data/data_storage.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
 
 class SurveyViewModel extends GetxController {
   final RxList<SurveyModel> surveys = <SurveyModel>[].obs;
-  
+
   final RxInt currentQuestionIndex = 0.obs;
   final RxDouble bottomPadding = 0.0.obs;
   final RxString msg = "".obs;
@@ -17,18 +21,15 @@ class SurveyViewModel extends GetxController {
   final FocusNode dummyFocusNode = FocusNode();
 
   double _currentOffset = 0.0;
-  
 
   // [ lifecycle ]
   @override
-  void onInit() {
-    _createDummyData();
-    
+  void onInit() async {
+    // _createDummyData();
+
     super.onInit();
     dummyFocusNode.addListener(() {
-      if (dummyFocusNode.hasFocus) {
-        
-      }
+      if (dummyFocusNode.hasFocus) {}
     });
   }
 
@@ -41,6 +42,27 @@ class SurveyViewModel extends GetxController {
   void onClose() {
     dummyFocusNode.dispose();
     super.onClose();
+  }
+
+  Future<void> initData() async {
+    surveys.clear();
+    final response = await http.get(
+      Uri.parse(
+        API.getURL(int.parse(DataStorage().id), EndPoint.GET_QUESTIONS),
+      ),
+    );
+    final data = jsonDecode(response.body);
+
+    var sortedEntries = data.entries.toList()
+      ..sort((a, b) => int.parse(a.key).compareTo(int.parse(b.key)));
+    Map<String, dynamic> sortedMap = {
+      for (var e in sortedEntries) e.key: e.value,
+    };
+    print(sortedMap.runtimeType);
+    for (var e in sortedMap.entries) {
+      print("e.key: ${e.key}, e.value: ${e.value}");
+      surveys.add(SurveyModel(id: int.parse( e.key), question: e.value));
+    }
   }
 
   // ------------------------------------------------------------
@@ -69,8 +91,7 @@ class SurveyViewModel extends GetxController {
     }
   }
 
-  void focus( GlobalKey key) {
-    
+  void focus(GlobalKey key) {
     bottomPadding.value = 300;
     // scrollController.animateTo(
     //   scrollController.position.pixels+300,
@@ -91,7 +112,6 @@ class SurveyViewModel extends GetxController {
   }
 
   void unfocus() {
-   
     bottomPadding.value = 0;
     // scrollController.animateTo(
     //   _currentOffset,
@@ -111,6 +131,5 @@ class SurveyBinding extends Bindings {
   @override
   void dependencies() {
     Get.lazyPut(() => SurveyViewModel());
-    
   }
 }

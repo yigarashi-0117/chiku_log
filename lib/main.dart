@@ -14,7 +14,7 @@ import '/data/data_storage.dart';
 
 void main() async {
   // web.window.navigator.storage.persist(); // CHECK: 機能してる？　必要ない？　
-  DataStorage().initizalize();
+  // DataStorage().initizalize();
   // TODO: 回答済みの場合は結果ページへ遷移。取得済みのアマギフ番号を表示 
   
 
@@ -38,7 +38,7 @@ class MainApp extends StatelessWidget {
       getPages: router,
       initialRoute: Routes.HOME,
       routingCallback: (route) async {
-        Log().d("[routingCallback] ${route.toString()}");
+        // Log().d("[routingCallback] ${route.toString()}");
         // web.window.history.replaceState(null, '', '/');
         // final current = web.window.location.href;
         // await Navigator.of(context).push(MaterialPageRoute(builder: (_) => page));
